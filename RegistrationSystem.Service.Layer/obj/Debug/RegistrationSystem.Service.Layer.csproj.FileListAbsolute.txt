@@ -1,0 +1,6 @@
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\bin\Debug\RegistrationSystem.Service.Layer.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\bin\Debug\RegistrationSystem.Service.Layer.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\obj\Debug\RegistrationSystem.Service.Layer.csprojAssemblyReference.cache
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\obj\Debug\RegistrationSystem.Service.Layer.csproj.CoreCompileInputs.cache
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\obj\Debug\RegistrationSystem.Service.Layer.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Service.Layer\obj\Debug\RegistrationSystem.Service.Layer.pdb

@@ -1,0 +1,9 @@
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.UserInterface.exe.config
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.UserInterface.exe
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.UserInterface.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csprojAssemblyReference.cache
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.Properties.Resources.resources
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.GenerateResource.cache
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CoreCompileInputs.cache
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.exe
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.pdb

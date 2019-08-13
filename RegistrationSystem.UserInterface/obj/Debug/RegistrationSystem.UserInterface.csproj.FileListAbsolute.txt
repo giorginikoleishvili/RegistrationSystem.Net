@@ -7,3 +7,16 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Us
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CoreCompileInputs.cache
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.exe
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.TestUI.resources
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Data.Layer.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Repository.Layer.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\MySql.Data.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Google.Protobuf.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Renci.SshNet.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Data.Layer.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Repository.Layer.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\MySql.Data.xml
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Google.Protobuf.xml
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Renci.SshNet.xml
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CopyComplete

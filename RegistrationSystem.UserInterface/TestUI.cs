@@ -1,4 +1,6 @@
-﻿using RegistrationSystem.Repository.Layer;
+﻿using RegistrationSystem.Data.Layer.Models;
+using RegistrationSystem.Repository.Layer;
+using RegistrationSystem.Repository.Layer.Extentions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +22,36 @@ namespace RegistrationSystem.UserInterface
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var a = Repository.Layer.Repository.GetRepositoryInstance;
-            var c = a.GetAllUser();
+            var user1 = new User
+            {
+                DateOfBirth = new DateTime(1999,4,24),
+                Email = "giorginikoleishili115@gmail.com",
+                FirstName = "giorgi",
+                Language = "kartuli",
+                LastName = "nikoleishvili",
+                Mobile = 577607123,
+                Password = "mevar",
+                PrivateID = "01001095795",
+                RegistrarionIP = "1231.34235.231423",
+                RegistrationDate = DateTime.Now,
+                Resident = "Sakartvelo",
+                UserAddress = new Address
+                {
+                    Addres1 = "gldani",
+                    Address2 = "zestafoni",
+                    City = "tbilisi",
+                    Country = "gori",
+                    Region = "cxinvali",
+                }
+
+
+
+            };
+
+          
+            var a = Repository.Layer.Repository.GetRepositoryInstance.IsUserInformationValidate(user1);
+            Repository.Layer.Repository.GetRepositoryInstance.AddUserInDataBase(user1);
+
         }
     }
 }

@@ -48,9 +48,15 @@ namespace RegistrationSystem.UserInterface
 
             };
 
-          
-            var a = Repository.Layer.Repository.GetRepositoryInstance.IsUserInformationValidate(user1);
-            Repository.Layer.Repository.GetRepositoryInstance.AddUserInDataBase(user1);
+
+            //var a = Repository.Layer.Repository.GetRepositoryInstance.IsUserInformationValidate(user1);
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            dict.Add("Country", "chorvila");
+            dict.Add("City", "mogvali");
+
+            //Repository.Layer.Repository.GetRepositoryInstance.AddUserInDataBase(user1);
+
+            Repository.Layer.Repository.GetRepositoryInstance.EditUserInformation(1, dict);
 
         }
     }

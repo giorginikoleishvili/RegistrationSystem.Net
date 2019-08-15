@@ -14,3 +14,5 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Re
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Repository.Layer\bin\Debug\MySql.Data.xml
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Repository.Layer\bin\Debug\Renci.SshNet.xml
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Repository.Layer\obj\Debug\RegistrationSystem.Repository.Layer.csproj.CopyComplete
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Repository.Layer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Repository.Layer\bin\Debug\Newtonsoft.Json.xml

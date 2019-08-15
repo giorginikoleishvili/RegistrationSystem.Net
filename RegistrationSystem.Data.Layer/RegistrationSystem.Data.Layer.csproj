@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="Enums\GenderEnum.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
+    <Compile Include="Interfaces\IDataChangeInformation.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\DataChangeInformation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

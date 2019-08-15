@@ -23,5 +23,7 @@ namespace RegistrationSystem.Repository.Layer.Extentions
                     string.IsNullOrEmpty(user.UserAddress.City) || string.IsNullOrEmpty(user.UserAddress.Country) ||
                     string.IsNullOrEmpty(user.UserAddress.Region));
         }
+
+
     }
 }

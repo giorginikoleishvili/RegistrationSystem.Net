@@ -21,4 +21,4 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Us
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CopyComplete
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Newtonsoft.Json.dll
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Newtonsoft.Json.xml
-C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.Cipher.resources
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.TestUI.resources

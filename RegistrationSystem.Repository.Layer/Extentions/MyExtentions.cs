@@ -26,6 +26,21 @@ namespace RegistrationSystem.Repository.Layer.Extentions
                     string.IsNullOrEmpty(user.UserAddress.Region));
         }
 
+        public static bool IsStringsNullOrEmpty(this Repository repository, params string[] wordList)
+        {
+            foreach (var word in wordList)
+            {
+                if (string.IsNullOrEmpty(word))
+                    return true;
+            }
+
+            return false;
+        }
+        public static Object ElementAt(this System.Data.Common.DbDataReader reader, int index)
+        {
+            return reader[index];
+        }
+
         public static bool IsCurrentTableCreatedInDataBase(this Repository repository, string tableName,
                                                                                         string dataBaseName)
         {

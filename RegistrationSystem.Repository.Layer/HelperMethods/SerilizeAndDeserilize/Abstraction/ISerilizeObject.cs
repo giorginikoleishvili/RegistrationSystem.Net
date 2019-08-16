@@ -8,6 +8,6 @@ namespace RegistrationSystem.Repository.Layer.SerilizeAndDeserilize.Abstraction
 {
     public interface ISerilizeObject<TSource>
     {
-        void Serilize(TSource source);
+        string Serilize(TSource source);
     }
 }

@@ -7,7 +7,6 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Us
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CoreCompileInputs.cache
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.exe
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.pdb
-C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.TestUI.resources
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Data.Layer.dll
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\RegistrationSystem.Repository.Layer.dll
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\MySql.Data.dll
@@ -22,3 +21,4 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Us
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.csproj.CopyComplete
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Newtonsoft.Json.dll
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\bin\Debug\Newtonsoft.Json.xml
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.UserInterface\obj\Debug\RegistrationSystem.UserInterface.Cipher.resources

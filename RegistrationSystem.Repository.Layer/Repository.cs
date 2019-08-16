@@ -2,6 +2,8 @@
 using RegistrationSystem.Data.Layer.Interfaces;
 using RegistrationSystem.Data.Layer.Models;
 using RegistrationSystem.Repository.Layer.Extentions;
+using RegistrationSystem.Repository.Layer.SerilizeAndDeserilize;
+using RegistrationSystem.Repository.Layer.SerilizeAndDeserilize.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,6 +16,8 @@ namespace RegistrationSystem.Repository.Layer
     public class Repository
     {
         private bool _isTableCreatedInDataBase = false;
+        private readonly string _path = Environment.CurrentDirectory + "\\LogiedInformation.txt";
+        private readonly ISerilizeObject<IDataChangeInformation> _serilizeObject = new SerilizeObject<IDataChangeInformation>();
         public EventHandler<IDataChangeInformation> onEditInformation;
 
 
@@ -21,7 +25,7 @@ namespace RegistrationSystem.Repository.Layer
         private static Repository _instance = null;
         private static readonly object _root = new object();
 
-        Repository() { }
+
         public static Repository GetRepositoryInstance
         {
             get
@@ -44,8 +48,8 @@ namespace RegistrationSystem.Repository.Layer
 
         private readonly string _crearteTableQuery = "CREATE TABLE users" +
             "(" +
-                                "User_Id INT AUTO_INCREMENT," + 
-                                "FirstName VARCHAR(20)," +                                  
+                                "User_Id INT AUTO_INCREMENT," +
+                                "FirstName VARCHAR(20)," +
                                 "LastName VARCHAR(20)," +
                                 "Resident VARCHAR(20)," +
                                 "PrivateId VARCHAR(20)," +
@@ -80,17 +84,16 @@ namespace RegistrationSystem.Repository.Layer
             while (reader.Read())
             {
                 var someValue = reader[1] as IUser;
-
-
             }
 
             return null;
 
         }
 
-        public void AddUserInDataBase(IUser user)
+        public void RegistreUser(IUser user)
         {
             var isUserChecked = this.IsUserInformationValidate(user);
+            CheckAndCreatTableInBase();
 
             if (isUserChecked)
             {
@@ -127,9 +130,12 @@ namespace RegistrationSystem.Repository.Layer
                 throw new ArgumentNullException("User is null or user's some parameter is null or empty");
         }
 
-        public void EditUserInformation(int userId, Dictionary<string,string> editValuePears)
+       
+
+        public void EditUserInformation(int userId, Dictionary<string, string> editValuePears)
         {
-            
+            CheckAndCreatTableInBase();
+
             if (userId >= 0 && editValuePears != null)
             {
                 foreach (var item in editValuePears)
@@ -160,29 +166,41 @@ namespace RegistrationSystem.Repository.Layer
 
                 ///logireba
                 var userIdAndName = GetNameAndPrivateId(userId);
-                var changeInformation = new DataChangeInformation
-                {
-                    editPairs = editValuePears,
-                    PrivateId = userIdAndName.Item2,
-                    UserName = userIdAndName.Item1,
-                    Time = DateTime.Now,
-                };
-
-                onEditInformation?.Invoke(this, changeInformation);
+                SaveEditiedInformationInFile(editValuePears, userIdAndName);
 
             }
             else
                 throw new ArgumentNullException("user id or dictionary is null or empty");
-            
-
         }
 
-        private void WriteInFileChangeInformation(IDataChangeInformation dataChangeInformation, int userId)
+
+
+
+        private void SaveEditiedInformationInFile(Dictionary<string, string> editValuePears, 
+                                                                            Tuple<string, string> userIdAndName)
         {
+            var changeInformationObject = new DataChangeInformation
+            {
+                editPairs = editValuePears,
+                PrivateId = userIdAndName.Item2,
+                UserName = userIdAndName.Item1,
+                Time = DateTime.Now,
+            };
 
+            var editiedDataJson = _serilizeObject.Serilize(changeInformationObject);
+            WriteInFile(editiedDataJson);
         }
 
-        private Tuple<string,string> GetNameAndPrivateId(int unicId)
+
+        private void WriteInFile(string json)
+        {
+            using (var Stream = new StreamWriter(_path, false))
+            {
+                Stream.WriteLine(json);
+                Stream.Close();
+            }
+        }
+        private Tuple<string, string> GetNameAndPrivateId(int unicId)
         {
 
             var getUserPrivateIdAndNameQuery = "SELECT FirstName, PrivateId FROM users " +
@@ -192,7 +210,6 @@ namespace RegistrationSystem.Repository.Layer
             connection2.Open();
 
             var getCurrentUserIdAndNameCommand = new MySqlCommand(getUserPrivateIdAndNameQuery, connection2);
-
 
             var readerForNameAndId = getCurrentUserIdAndNameCommand.ExecuteReader();
 
@@ -204,39 +221,29 @@ namespace RegistrationSystem.Repository.Layer
                 name = readerForNameAndId[0].ToString();
                 privateId = readerForNameAndId[1].ToString();
             }
-
-            
             connection2.Close();
 
             return new Tuple<string, string>(name, privateId);
         }
 
-        private MySqlDataReader ExecuteQueryInBase(string someQuery,MySqlConnection connection)
+        private void CheckAndCreatTableInBase()
         {
-            if (string.IsNullOrEmpty(someQuery))
-                return null;
-
-
-            
-            var myCommand = new MySqlCommand(someQuery, connection);
-
-            var reader = myCommand.ExecuteReader();
-            return reader;
+            var isTableCreated = this.IsCurrentTableCreatedInDataBase("users", "TestBase");
+            if (!isTableCreated)
+                CreateTableInBase();
         }
 
-        private void CreateTableInBase(MySqlConnection connection)
+        private void CreateTableInBase()
         {
-            if (!_isTableCreatedInDataBase)
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString))
             {
                 var createTableCommand = new MySqlCommand(_crearteTableQuery, connection);
                 connection.Open();
                 createTableCommand.ExecuteReader();
-                connection.Close();
-
-                _isTableCreatedInDataBase = true;
             }
         }
 
-       
+
+
     }
 }

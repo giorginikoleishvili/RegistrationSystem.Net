@@ -10,9 +10,9 @@ namespace RegistrationSystem.Repository.Layer.SerilizeAndDeserilize
 {
     public class SerilizeObject<TSource> : ISerilizeObject<TSource>
     {
-        public void Serilize(TSource source)
+        public string Serilize(TSource source)
         {
-            JsonConvert.SerializeObject(source);
+            return JsonConvert.SerializeObject(source);
         }
     }
 }

@@ -1,19 +1,36 @@
-﻿using RegistrationSystem.Data.Layer.Interfaces;
-using RegistrationSystem.Repository.Layer;
-using RegistrationSystem.Service.Layer.Abstractions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RegistrationSystem.Data.Layer.Interfaces;
+using RegistrationSystem.Repository.Layer;
+using RegistrationSystem.Repository.Layer.Extentions;
+using RegistrationSystem.Service.Layer.HelperClass;
 
-namespace RegistrationSystem.Service.Layer.Implementation
+namespace RegistrationSystem.Service.Layer.Abstractions
 {
     public class RegistreUserService : IRegistreUserService
     {
-        public void RegistrationUser(Repository.Layer.Repository repository, IUser user)
+        public async Task RegistrationUserAsync(Repository.Layer.Repository repository, IUser user, ValidationSystem validationSystem)
         {
-            throw new NotImplementedException();
+            var userPartsNulOrEmpty = repository.IsUserInformationValidate(user);
+            try
+            {
+                var userValidParametersDeep = await validationSystem.RunAllValidationForUser();
+                if (userPartsNulOrEmpty && userValidParametersDeep)
+                {
+                    repository.RegistreUser(user);
+                    
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var exeption = ex.Message;
+            }
+
+               
         }
     }
 }

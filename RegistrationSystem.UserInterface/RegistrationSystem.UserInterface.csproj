@@ -94,6 +94,10 @@
       <Project>{6F0ED4A8-DF8A-446A-A9DE-1E517A44B3C2}</Project>
       <Name>RegistrationSystem.Repository.Layer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RegistrationSystem.Service.Layer\RegistrationSystem.Service.Layer.csproj">
+      <Project>{33BFC630-13DA-4D71-A496-619DBB7CB481}</Project>
+      <Name>RegistrationSystem.Service.Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

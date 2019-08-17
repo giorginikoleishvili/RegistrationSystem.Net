@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,12 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IEditInformationService.cs" />
+    <Compile Include="Abstractions\ILoginUserService.cs" />
     <Compile Include="Abstractions\IRegistreUserService.cs" />
+    <Compile Include="Implementation\LoginUserService.cs" />
     <Compile Include="Implementation\RegistreUserService.cs" />
+    <Compile Include="HelperClass\Abstraction\ValidationSystem.cs" />
+    <Compile Include="HelperClass\Validation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HelperClass\Abstraction\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RegistrationSystem.Data.Layer\RegistrationSystem.Data.Layer.csproj">
@@ -58,5 +63,9 @@
       <Name>RegistrationSystem.Repository.Layer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

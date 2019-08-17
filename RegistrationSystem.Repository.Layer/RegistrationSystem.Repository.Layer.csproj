@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Extentions\MyExtentions.cs" />
     <Compile Include="HelperMethods\PasswordHashing\HashingSystem.cs" />
+    <Compile Include="NetworkLayer\HttpRequest.cs" />
+    <Compile Include="NetworkLayer\Abstraction\IHttpRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="HelperMethods\SerilizeAndDeserilize\Abstraction\IDeserilizeJson.cs" />

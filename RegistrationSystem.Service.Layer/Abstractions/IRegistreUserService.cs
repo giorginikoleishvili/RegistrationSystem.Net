@@ -1,4 +1,5 @@
 ﻿using RegistrationSystem.Data.Layer.Interfaces;
+using RegistrationSystem.Service.Layer.HelperClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace RegistrationSystem.Service.Layer.Abstractions
 {
     public interface IRegistreUserService
     {
-        void RegistrationUser(Repository.Layer.Repository repository, IUser user);
+        Task RegistrationUserAsync(Repository.Layer.Repository repository, IUser user, ValidationSystem validationSystem);
         
     }
 }

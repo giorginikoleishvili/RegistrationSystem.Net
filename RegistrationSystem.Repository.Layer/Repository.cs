@@ -3,6 +3,7 @@ using RegistrationSystem.Data.Layer.Interfaces;
 using RegistrationSystem.Data.Layer.Models;
 using RegistrationSystem.Repository.Layer.Extentions;
 using RegistrationSystem.Repository.Layer.HelperMethods.PasswordHashing;
+using RegistrationSystem.Repository.Layer.NetworkLayer.Abstraction;
 using RegistrationSystem.Repository.Layer.SerilizeAndDeserilize;
 using RegistrationSystem.Repository.Layer.SerilizeAndDeserilize.Abstraction;
 using System;
@@ -18,6 +19,8 @@ namespace RegistrationSystem.Repository.Layer
     {
         private readonly string _path = Environment.CurrentDirectory + "\\LogiedInformation.txt";
         private readonly ISerilizeObject<IDataChangeInformation> _serilizeObject = new SerilizeObject<IDataChangeInformation>();
+        
+
         #region Singleton repository
         private static Repository _instance = null;
         private static readonly object _root = new object();
@@ -89,9 +92,6 @@ namespace RegistrationSystem.Repository.Layer
             else
                 throw new ArgumentNullException("User is null or user's some parameter is null or empty");
         }
-
-
-
         public void EditUserInformation(int userId, Dictionary<string, string> editValuePears)//shemodis ra unda sheicvalos
                                                                                               //maglitad paroli(key)
                                                                                               //da ritac unda sheicvalos(value)
@@ -131,14 +131,14 @@ namespace RegistrationSystem.Repository.Layer
             else
                 throw new ArgumentNullException("user id or dictionary is null or empty");
         }
-
         public async Task<IUser> LoginUserAsync(string email, string password)//informaciis gamomtani esaa ubralod daloginebasac ase gavaketebdi
                                                                               //mibrundeba konkretuli obiekti tavisi monacemebit..
                                                                               //am obiekts shemdeg UI shi gamoikeneb
         {
 
 
-            var isParametersNullOrEmpty = this.IsStringsNullOrEmpty(email, password);
+            var isParametersNullOrEmpty = 
+                this.IsStringsNullOrEmpty(email, password);
 
             if (isParametersNullOrEmpty)
                 throw new ArgumentNullException("Email or password is null or empty");
@@ -161,7 +161,6 @@ namespace RegistrationSystem.Repository.Layer
                         var userAddress = new Address
                         {
                             Country = result.ElementAt(12).ToString(),
-
                             Region = result.ElementAt(13).ToString(),
                             City = result.ElementAt(14).ToString(),
                             Addres1 = result.ElementAt(15).ToString(),
@@ -194,15 +193,12 @@ namespace RegistrationSystem.Repository.Layer
             }
 
             return null;
-
-
         }
 
 
 
-
         private void SaveEditiedInformationInFile(Dictionary<string, string> editValuePears,
-                                                                            Tuple<string, string> userIdAndName)
+                                                                Tuple<string, string> userIdAndName)
         {
             var changeInformationObject = new DataChangeInformation
             {
@@ -215,8 +211,6 @@ namespace RegistrationSystem.Repository.Layer
             var editiedDataJson = _serilizeObject.Serilize(changeInformationObject);
             WriteInFile(editiedDataJson);
         }
-
-
         private void WriteInFile(string json)
         {
             using (var Stream = new StreamWriter(_path, false))
@@ -251,14 +245,12 @@ namespace RegistrationSystem.Repository.Layer
 
             return new Tuple<string, string>(name, privateId);
         }
-
         private void CheckAndCreatTableInBase()
         {
             var isTableCreated = this.IsCurrentTableCreatedInDataBase("users", "TestBase");
             if (!isTableCreated)
                 CreateTableInBase();
         }
-
         private void CreateTableInBase()
         {
 

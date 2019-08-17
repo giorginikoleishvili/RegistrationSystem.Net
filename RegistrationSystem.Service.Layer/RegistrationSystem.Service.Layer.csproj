@@ -41,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IRegistreUserService.cs" />
+    <Compile Include="Implementation\RegistreUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HelperClass\Abstraction\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RegistrationSystem.Data.Layer\RegistrationSystem.Data.Layer.csproj">
+      <Project>{5ae3e63d-b731-4666-93a2-3fc45b084fcd}</Project>
+      <Name>RegistrationSystem.Data.Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RegistrationSystem.Repository.Layer\RegistrationSystem.Repository.Layer.csproj">
+      <Project>{6f0ed4a8-df8a-446a-a9de-1e517a44b3c2}</Project>
+      <Name>RegistrationSystem.Repository.Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

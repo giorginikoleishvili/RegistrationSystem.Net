@@ -18,9 +18,6 @@ namespace RegistrationSystem.Repository.Layer
     {
         private readonly string _path = Environment.CurrentDirectory + "\\LogiedInformation.txt";
         private readonly ISerilizeObject<IDataChangeInformation> _serilizeObject = new SerilizeObject<IDataChangeInformation>();
-        public EventHandler<IDataChangeInformation> onEditInformation;
-
-
         #region Singleton repository
         private static Repository _instance = null;
         private static readonly object _root = new object();
@@ -95,7 +92,9 @@ namespace RegistrationSystem.Repository.Layer
 
 
 
-        public void EditUserInformation(int userId, Dictionary<string, string> editValuePears)
+        public void EditUserInformation(int userId, Dictionary<string, string> editValuePears)//shemodis ra unda sheicvalos
+                                                                                              //maglitad paroli(key)
+                                                                                              //da ritac unda sheicvalos(value)
         {
             if (userId >= 0 && editValuePears != null)
             {
@@ -108,24 +107,18 @@ namespace RegistrationSystem.Repository.Layer
                                                     $"{item.Key} = '{item.Value} '" +
                                             "WHERE " +
                                                     $"User_Id = {userId};";
-                        Task.Run(() =>
+
+                        using (MySqlConnection connection = new MySqlConnection(_connectionString))
                         {
-
-                            var connection1 = new MySqlConnection(_connectionString);
-                            connection1.Open();
-                            var editUserComand = new MySqlCommand(updateUserInformationQuery, connection1);
-
-                            editUserComand.ExecuteReader();
-
-                            connection1.Close();
-
-                        });
-
+                            var createUpdateUserInformationComand = 
+                                                    new MySqlCommand(updateUserInformationQuery, connection);
+                            connection.Open();
+                            createUpdateUserInformationComand.ExecuteReaderAsync();
+                        }
                     }
                     catch (Exception ex)
                     {
                         var exeption = ex.Message;
-
                     }
 
                 }
@@ -140,8 +133,8 @@ namespace RegistrationSystem.Repository.Layer
         }
 
         public async Task<IUser> LoginUserAsync(string email, string password)//informaciis gamomtani esaa ubralod daloginebasac ase gavaketebdi
-                                                                               //mibrundeba konkretuli obiekti tavisi monacemebit..
-                                                                               //am obiekts shemdeg UI shi gamoikeneb
+                                                                              //mibrundeba konkretuli obiekti tavisi monacemebit..
+                                                                              //am obiekts shemdeg UI shi gamoikeneb
         {
 
 
@@ -150,7 +143,7 @@ namespace RegistrationSystem.Repository.Layer
             if (isParametersNullOrEmpty)
                 throw new ArgumentNullException("Email or password is null or empty");
 
-            var findUserInBaseByEmailAndPasswordQuery =     "SELECT * FROM users " +
+            var findUserInBaseByEmailAndPasswordQuery = "SELECT * FROM users " +
                                                       "WHERE " +
                                                             $"Password_ = '{password}' AND Email = '{email}'";
             try
@@ -175,7 +168,7 @@ namespace RegistrationSystem.Repository.Layer
                             Address2 = result.ElementAt(16).ToString(),
                         };
 
-                        var a = new User
+                        var currentUser = new User
                         {
                             FirstName = result.ElementAt(1).ToString(),
                             LastName = result.ElementAt(2).ToString(),
@@ -190,7 +183,7 @@ namespace RegistrationSystem.Repository.Layer
                             UserAddress = userAddress
 
                         };
-                        return a;
+                        return currentUser;
                     }
                 }
             }

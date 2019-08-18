@@ -15,15 +15,18 @@ namespace RegistrationSystem.Service.Layer.Abstractions
         public async Task RegistrationUserAsync(Repository.Layer.Repository repository, IUser user, ValidationSystem validationSystem)
         {
             var userPartsNulOrEmpty = repository.IsUserInformationValidate(user);
+            validationSystem.SetUser(user);
             try
             {
-                var userValidParametersDeep = await validationSystem.RunAllValidationForUser();
-                if (userPartsNulOrEmpty && userValidParametersDeep)
-                {
+                var userValidParametersDeep = await validationSystem.GetAllValidationForUserAsync();
+                var succsessValidation = userValidParametersDeep
+                                        .Count(o => o.IsValidate == true);
+                
+                if (userPartsNulOrEmpty && succsessValidation == 4)
                     repository.RegistreUser(user);
-                    
-                }
 
+                validationSystem._user = null;
+                    
             }
             catch (Exception ex)
             {

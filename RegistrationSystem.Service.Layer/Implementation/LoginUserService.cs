@@ -14,8 +14,9 @@ namespace RegistrationSystem.Service.Layer.Implementation
     {
         public async Task<IUser> LoginUserInSystemAsync(string password, string mail, Repository.Layer.Repository repository)
         {
-            var isParamsNulOrEmpty = repository.IsStringsNullOrEmpty(password, mail);
-            if (!isParamsNulOrEmpty)
+            var isParamsNulOrEmpty = !repository.IsStringsNullOrEmpty(password, mail);
+
+            if (isParamsNulOrEmpty)
             {
                 try
                 {

@@ -4,3 +4,6 @@ C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Da
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\obj\Debug\RegistrationSystem.Data.Layer.csproj.CoreCompileInputs.cache
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\obj\Debug\RegistrationSystem.Data.Layer.dll
 C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\obj\Debug\RegistrationSystem.Data.Layer.pdb
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\giorg\source\repos\RegistrationSystem.WindowsForm\RegistrationSystem.Data.Layer\obj\Debug\RegistrationSystem.Data.Layer.csproj.CopyComplete

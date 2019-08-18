@@ -1,7 +1,9 @@
 ﻿using RegistrationSystem.Data.Layer.Models;
 using RegistrationSystem.Repository.Layer;
 using RegistrationSystem.Repository.Layer.Extentions;
+using RegistrationSystem.Service.Layer.Abstractions;
 using RegistrationSystem.Service.Layer.HelperClass;
+using RegistrationSystem.Service.Layer.Implementation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,15 +38,15 @@ namespace RegistrationSystem.UserInterface
 
         private async void Button1_Click(object sender, EventArgs e)
         {
-            var user1 = new User
+           var user1 = new User
             {
                 DateOfBirth = new DateTime(1999, 4, 24),
-                Email = "adadasdasd",
-                FirstName = "SDFSDFSDF",
-                Language = "lazuri",
-                LastName = "DFSSFSDFSDFSDFSFD",
-                Mobile = 577607123,
-                Password = "mevar",
+                Email = "giorginikoleishvili115@gmail.com",
+                FirstName = "luka",
+                Language = "kartuli",
+                LastName = "nikoleishvili",
+                Mobile = "+995577607123",
+                Password = "Gop143",
                 PrivateID = "01001095795",
                 RegistrarionIP = "1231.34235.231423",
                 RegistrationDate = DateTime.Now,
@@ -57,18 +59,25 @@ namespace RegistrationSystem.UserInterface
                     Country = "gori",
                     Region = "cxinvali",
                 }
+           };
+
+            var repo = Repository.Layer.Repository.GetRepositoryInstance;
+            var val = Validation.GetRepositoryInstance;
+
+            var regi = new RegistreUserService();
+            await regi.RegistrationUserAsync(repo,user1,val);
+
+            var ageVl = val.IsAgeValid(53);
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            dict.Add("FirstName", "jora");
+            dict.Add("Mobile", "+995593724547");
+
+            EditUserInformatinService editUserInformatinService = new EditUserInformatinService();
+            editUserInformatinService.EditInformationService(1,dict,repo);
 
 
-
-            };
-
-            var asdas = regex.Match("sdfSFDS1@").Success;
-            
-
-            //Repository.Layer.Repository.GetRepositoryInstance.RegistreUser(user1);
-            var a = await Repository.Layer.Repository.GetRepositoryInstance.LoginUserAsync("giorginikoleishili115@gmail.com", "$MYHASH$V1$10000$FAallpo/M2dqA+G2sFvd4zLcxAuwDKHuPbv93Qg15xFRi3aH");
-
-
+            LoginUserService loginUserService = new LoginUserService();
+            var logined = await loginUserService.LoginUserInSystemAsync("Gop143", "giorginikoleishvili115@gmail.com",repo);
 
             //Repository.Layer.Repository.GetRepositoryInstance.EditUserInformation(1, dict);
 

@@ -71,17 +71,16 @@ namespace RegistrationSystem.Repository.Layer
                                                        $"'{user.Email}','{userHashedPassword}','{user.Mobile}','{user.DateOfBirth}'," +
                                                        $"'{user.RegistrationDate}','{user.UserAddress.Country}','{user.UserAddress.Region}'," +
                                                        $"'{user.UserAddress.City}','{user.UserAddress.Addres1}','{user.UserAddress.Address2}');";
-                    Task.Run(() =>
-                    {
+                    
                         var connection = new MySqlConnection(_connectionString);
 
                         var myCommand = new MySqlCommand(insertUserQuery, connection);
                         connection.Open();
-                        var reader = myCommand.ExecuteReader();
+                        var reader = myCommand.ExecuteReaderAsync();
 
                         connection.Close();
 
-                    });
+                    
 
                 }
                 catch (Exception e)
@@ -143,46 +142,56 @@ namespace RegistrationSystem.Repository.Layer
             if (isParametersNullOrEmpty)
                 throw new ArgumentNullException("Email or password is null or empty");
 
-            var findUserInBaseByEmailAndPasswordQuery = "SELECT * FROM users " +
+            var findUserInBaseByEmailQuery = "SELECT * FROM users " +
                                                       "WHERE " +
-                                                            $"Password_ = '{password}' AND Email = '{email}'";
+                                                            $"Email = '{email}'";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
 
 
-                    var createfindInformationCommand = new MySqlCommand(findUserInBaseByEmailAndPasswordQuery, connection);
+                    var createfindInformationCommand = new MySqlCommand(findUserInBaseByEmailQuery, connection);
                     connection.Open();
                     var result = await createfindInformationCommand.ExecuteReaderAsync();
 
                     while (result.Read())
                     {
-                        var userAddress = new Address
-                        {
-                            Country = result.ElementAt(12).ToString(),
-                            Region = result.ElementAt(13).ToString(),
-                            City = result.ElementAt(14).ToString(),
-                            Addres1 = result.ElementAt(15).ToString(),
-                            Address2 = result.ElementAt(16).ToString(),
-                        };
+                        var userPassword = result.ElementAt(8).ToString();
 
-                        var currentUser = new User
-                        {
-                            FirstName = result.ElementAt(1).ToString(),
-                            LastName = result.ElementAt(2).ToString(),
-                            Resident = result.ElementAt(3).ToString(),
-                            PrivateID = result.ElementAt(4).ToString(),
-                            RegistrarionIP = result.ElementAt(5).ToString(),
-                            Language = result.ElementAt(6).ToString(),
-                            Email = result.ElementAt(7).ToString(),
-                            Mobile = Int64.Parse(result.ElementAt(9).ToString()),
-                            DateOfBirth = Convert.ToDateTime(result.ElementAt(10).ToString()),
-                            RegistrationDate = Convert.ToDateTime(result.ElementAt(11).ToString()),
-                            UserAddress = userAddress
+                        var isVerified = HashingSystem.Verify(password, userPassword);
 
-                        };
-                        return currentUser;
+                        if (isVerified)
+                        {
+
+                            var userAddress = new Address
+                            {
+                                Country = result.ElementAt(12).ToString(),
+                                Region = result.ElementAt(13).ToString(),
+                                City = result.ElementAt(14).ToString(),
+                                Addres1 = result.ElementAt(15).ToString(),
+                                Address2 = result.ElementAt(16).ToString(),
+                            };
+
+                            var currentUser = new User
+                            {
+                                FirstName = result.ElementAt(1).ToString(),
+                                LastName = result.ElementAt(2).ToString(),
+                                Resident = result.ElementAt(3).ToString(),
+                                PrivateID = result.ElementAt(4).ToString(),
+                                RegistrarionIP = result.ElementAt(5).ToString(),
+                                Language = result.ElementAt(6).ToString(),
+                                Email = result.ElementAt(7).ToString(),
+                                Mobile = result.ElementAt(9).ToString(),
+                                DateOfBirth = Convert.ToDateTime(result.ElementAt(10).ToString()),
+                                RegistrationDate = Convert.ToDateTime(result.ElementAt(11).ToString()),
+                                UserAddress = userAddress
+
+                            };
+                            return currentUser;
+
+                        }
+                        
                     }
                 }
             }
@@ -265,7 +274,7 @@ namespace RegistrationSystem.Repository.Layer
                                 "Language_ VARCHAR(20)," +
                                 "Email VARCHAR(50)," +
                                 "Password_ LONGTEXT," +
-                                "Mobile BIGINT," +
+                                "Mobile LONGTEXT," +
                                 "DateOfBirth LONGTEXT," +
                                 "RegistrationDate LONGTEXT," +
                                 "Country VARCHAR(20)," +

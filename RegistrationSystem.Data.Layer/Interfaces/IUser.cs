@@ -22,7 +22,7 @@ namespace RegistrationSystem.Data.Layer.Interfaces
 
         string Email { get; set; }
 
-        long Mobile { get; set; }
+        string Mobile { get; set; }
         string Password { get; set; }
         
         IAddress UserAddress { get; set; }

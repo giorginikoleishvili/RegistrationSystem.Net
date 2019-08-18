@@ -35,7 +35,7 @@ namespace RegistrationSystem.Repository.Layer.Extentions
             foreach (var word in wordList)
             {
                 if (string.IsNullOrEmpty(word))
-                    return true;
+                    return true; ;
             }
 
             return false;

@@ -44,9 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IEditInformationService.cs" />
+    <Compile Include="Abstractions\IEditUserInformationService.cs" />
     <Compile Include="Abstractions\ILoginUserService.cs" />
     <Compile Include="Abstractions\IRegistreUserService.cs" />
+    <Compile Include="Implementation\EditUserInformatinService.cs" />
     <Compile Include="Implementation\LoginUserService.cs" />
     <Compile Include="Implementation\RegistreUserService.cs" />
     <Compile Include="HelperClass\Abstraction\ValidationSystem.cs" />

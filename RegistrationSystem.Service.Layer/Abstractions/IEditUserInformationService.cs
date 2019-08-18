@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RegistrationSystem.Service.Layer.Abstractions
 {
-    public interface IEditInformationService
+    public interface IEditUserInformationService
     {
-        public editUserInformation(int userId, Dictionary<string, string> editValuePears, Repository.Layer.Repository repository);
-        { }
+        void EditInformationService(int userId, Dictionary<string, string> editValuePears, Repository.Layer.Repository repository);
+        
     }
 }
